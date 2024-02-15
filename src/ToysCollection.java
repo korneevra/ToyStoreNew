@@ -21,8 +21,16 @@ public class ToysCollection {
         return null;
     }
 
-    public Toy getToyIndex(int i) {
+    public Toy getToyByIndex(int i) {
         return toys.get(i);
+    }
+
+    public int length() {
+        int length = 0;
+        for (Toy o: toys) {
+           length++;
+        }
+        return length;
     }
 
     public void removeIndex(int i) {
@@ -62,17 +70,18 @@ public class ToysCollection {
         return false;
     }
 
-
-//    @Override
-//    public String toString() {
-//        return Toys.toString() ;
-//    }
-
     @Override
     public String toString() {
         String res = "";
         for (Toy o: toys) {
-            res = res + o + "%\n";
+            res += o + "%\n";
+        }
+        return res ;
+    }
+    public String toNames() {
+        String res = "";
+        for (Toy o: toys) {
+            res += o.name + "\n";
         }
         return res ;
     }

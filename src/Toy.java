@@ -1,7 +1,7 @@
 public class Toy {
 
     private static int idToy;
-    private int id;
+    private final int id;
     String name;
     int quantity;
     int weight;
@@ -23,6 +23,10 @@ public class Toy {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setQuantity(int quantity) {
