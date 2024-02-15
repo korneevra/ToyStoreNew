@@ -12,9 +12,56 @@ public class ToysCollection {
         toys.add(toy);
     }
 
-    public void rmToy(Toy toy) {
-        toys.remove(toy);
+    public Toy getToy(int id) {
+        for (Toy o: toys) {
+            if(o.getId() == id) {
+                return o;
+            }
+        }
+        return null;
     }
+
+    public Toy getToyIndex(int i) {
+        return toys.get(i);
+    }
+
+    public void removeIndex(int i) {
+        toys.remove(i);
+    }
+
+    public void remove(int id) {
+        int count = 0;
+        for (Toy o: toys) {
+            int t = o.getId();
+            if(o.getId() == id) {
+                int quantity = o.getQuantity();
+                if (quantity > 1) {
+                    o.setQuantity(quantity - 1);
+                } else {
+                    toys.remove(count);
+                }
+                break;
+            }
+            count++;
+        }
+    }
+
+    public boolean trying(int id) {
+        for (Toy o: toys) {
+            if(o.getId() == id) {
+                int weight = o.weight;
+                if (weight == 100) return true;
+                if (weight == 0) return false;
+                if(RndGen.number() > weight) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
 //    @Override
 //    public String toString() {
