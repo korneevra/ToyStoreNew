@@ -9,6 +9,7 @@ public class PrizeToFile {
 
             fileWriter.write(name + '\n');
             fileWriter.flush();
+            fileWriter.close();
 
         } catch (IOException e) {
             System.out.println(e.getMessage());

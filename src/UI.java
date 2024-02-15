@@ -21,7 +21,7 @@ public class UI {
             view.printString(n + "1. Enter new Toy.\n" +
                     "2. Edit Toy weight.\n" +
                     "3. Game!\n" +
-                    "4. Upload the result.\n" +
+                    "4. Take the prizes.\n" +
                     ":>_");
             switch (view.getString()) {
                 case "1":
@@ -29,7 +29,7 @@ public class UI {
                     continue;
                 case "2":
                     view.printString(toys.toString());
-                    view.printString("Enter number of the toy:>_");
+                    view.printString("Enter number of the toys:>_");
                     int n = Integer.parseInt(view.getString());
                     if (toyNumControl(n, toys)) {
                         view.printString("Wrong number!");
@@ -41,6 +41,10 @@ public class UI {
                     continue;
                 case "3":
                     return;
+                case "4":
+                    GetPrize.getPrize(prizeToys);
+                    view.printString(//"The prize upload in prizes.txt.\n" +
+                                        "------\n" + prizeToys.toNames() + "------");
             }
         }
     }
@@ -67,7 +71,7 @@ public class UI {
     }
 
     public void start() {
-        toys.addToy(new Toy("BEER", 10,50));
+        toys.addToy(new Toy("BEAR", 10,50));
         toys.addToy(new Toy("FLY", 5,75));
         toys.addToy(new Toy("TIGER", 10,50));
         toys.addToy(new Toy("BIRD", 1,25));
@@ -79,17 +83,17 @@ public class UI {
             view.printString(toys.toString());
             view.printString("Enter the number of the toy you want to try to catch:>_");
             if (ToyChoice.turn(Integer.parseInt(view.getString()), toys, prizeToys)) {
-                view.printString("You are Win! The Toy in the container.\n" + n +
-                        prizeToys.toNames() + n +
+                view.printString("You are Win! The Toy in the container.\n" +
+                        n + prizeToys.toNames() + n +
                         "Want to try again? (y/n):>_");
                 if (view.getString().equals("y")) {
                     continue;
                 } else {
                     startMenu();
                 }
-
             } else {
                 view.printString(n + "You are Loose! Try again.\n" +
+                        n + prizeToys.toNames() + n +
                         "Want to try again? (y/n):>_");
                 if (view.getString().equals("y")) {
                     continue;
